@@ -1,0 +1,28 @@
+// Método para implementar la ayuda en una ventana, 
+// habría que ejecutarlo al tocar un botón de esa ventana o al pulsar F1
+private void ponLaAyuda() {
+    try {
+        // Carga el fichero de ayuda
+        File fichero = new File("help"+File.separator+"help_set.hs"); 
+        URL hsURL = fichero.toURI().toURL();
+            
+        ClassLoader cl = MainWindow.class.getClassLoader();
+        hsURL = HelpSet.findHelpSet(cl,"help/help_set.hs");
+        HelpSet hs = new HelpSet(null, hsURL);
+
+        // Crea el HelpSet y el HelpBroker
+        HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+        HelpBroker hb = helpset.createHelpBroker();
+
+        // Pone ayuda a item de menu al pulsarlo y a F1 en ventana
+        // principal y secundaria.
+		
+		// ¡¡¡  Cambiar BOTÓN y TARGET  !!!
+        hb.enableHelpOnButton(jMenu1, "ventana_principal", helpset); 
+	hb.enableHelpKey(getRootPane(),"ventana_principal",helpset);
+        hb.enableHelpOnButton(jButton1, "ventana_principal", helpset);
+        hb.enableHelpOnButton(jButton2, "ventana_secundaria", helpset);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}

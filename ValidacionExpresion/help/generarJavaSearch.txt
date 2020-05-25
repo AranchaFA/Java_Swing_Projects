@@ -1,0 +1,7 @@
+Ejemplo en Windows
+c:\ cd c:\...rutaDeNuestroProyecto\help
+c:\ java -jar C:\...rutaDondeTengamosElFicheroJH2.0(MejorNuestroProyecto)\jh2.0\javahelp\bin\jhindexer.jar html
+
+
+Para que funcione, tiene que haber TEXTO en los html, si sólo hay imágenes da Exception porque no hay
+palabras ni textos que se puedan buscar!!
